@@ -19,6 +19,15 @@ app.get('/bad', (req, res, next) => {
     next('error from bad end point');
 });
 
+app.get('/status', (req, res) => {
+    let statusOutput = {
+        "domain": "ibrahim-api-server.herokuapp.com",
+        "status": "running",
+        "PORT ": 3000,
+    }
+    res.status(200).json(statusOutput)
+})
+
 app.use(loggerMiddleWare);
 app.use(foodRoutes);
 app.use(customerRoutes);
